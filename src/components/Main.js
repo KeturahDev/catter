@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import getCatImage from '../services/getCatImage'
+import getCatImage, {axiosGetCat} from '../services/getCatImage'
 
 const Button = styled.button `
   background: transparent;
@@ -18,11 +18,16 @@ const Box = styled.div `
 `
 
 function Main () {
- 
   const [imgURL, setImgURL ] = useState('') 
 
-  const setImage = (response) => {
-    setImgURL(response[0]['url']);
+  // const setImage = (response) => {
+  //   setImgURL(response[0]['url']);
+  // }
+
+  const setImage = async () => {
+    const response = await axiosGetCat()
+    console.log("response:   ",response)
+    setImgURL(response['data'][0]['url'])
   }
 
   return (
@@ -32,7 +37,8 @@ function Main () {
           What happens if you press the button?
         </div>
         <img src={imgURL} style={{maxWidth: '90%', padding: '1em'}}/>
-        <Button onClick={() => getCatImage(setImage)}>Cat</Button>
+        <Button onClick={() => setImage()}>Cat</Button>
+        {/* <Button onClick={() => getCatImage(setImage)}>Cat</Button> */}
       </Box>
     </React.Fragment>
   )
