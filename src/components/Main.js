@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import getCatImage from '../services/getCatImage'
 
-
-
 const Button = styled.button `
   background: transparent;
   border-radius: 3px;
@@ -19,7 +17,6 @@ const Box = styled.div `
   border: 2px solid orange;
 `
 
-
 function Main () {
  
   const [imgURL, setImgURL ] = useState('') 
@@ -34,7 +31,7 @@ function Main () {
         <div>
           What happens if you press the button?
         </div>
-        <img src={imgURL} />
+        <img src={imgURL} style={{maxWidth: '90%', padding: '1em'}}/>
         <Button onClick={() => getCatImage(setImage)}>Cat</Button>
       </Box>
     </React.Fragment>
