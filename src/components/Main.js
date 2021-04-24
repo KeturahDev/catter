@@ -24,34 +24,25 @@ function Main (content) {
   let catImage;
   const getCatImage = async () => {
     try {
-      let response = await fetch(`https://api.thecatapi.com/v1/images?${process.env.API_KEY}`, {
-        method: 'GET'
-      })
-      console.log("response : ", response[0])
-      console.log("redstate: ", response.readyState)
-      if ( response.readyState == 4 && response.status == 200) {
-        console.log('responseText:' + response.responseText);
-      }
-
-      // const data = response
-      // console.log("image is: ", data.responseText)
-
-      //   const xmlhttp = new XMLHttpRequest();
-      //   xmlhttp.onreadystatechange = function() {
-      //     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-      //       console.log('responseText:' + xmlhttp.responseText);
-      //       try {
-      //         const data = JSON.parse(xmlhttp.responseText);
-      //         console.log(data)
-      //       } catch (err) {
-      //         console.log(err.message + " in " + xmlhttp.responseText);
-      //         return;
-      //       }
-      //       // callback(data);
-      //     }
-      //   };
-      //   xmlhttp.open("GET", 'https://api.thecatapi.com/v1/images/search?size=full', true);
-      //   xmlhttp.send();
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            console.log('responseText:' + xmlhttp.responseText);
+            try {
+              const data = JSON.parse(xmlhttp.responseText);
+              console.log(data)
+            } catch (err) {
+              console.log(err.message + " in " + xmlhttp.responseText);
+              return;
+            }
+          }
+        };
+        try{
+          xmlhttp.open("GET", 'https://api.thecatapi.com/v1/images/search?size=full', true);
+          xmlhttp.send();
+        } catch (err) {
+          alert(`error: ${err}`)
+        }
 
     } catch (err) {
       console.log('error: ', err)
