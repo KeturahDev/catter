@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import getCatImage from '../services/getCatImage'
 
 
 
@@ -21,41 +22,24 @@ const Box = styled.div `
 
 function Main (content) {
  
-  let catImage;
-  const getCatImage = async () => {
-    try {
-        const xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            console.log('responseText:' + xmlhttp.responseText);
-            try {
-              const data = JSON.parse(xmlhttp.responseText);
-              console.log(data)
-            } catch (err) {
-              console.log(err.message + " in " + xmlhttp.responseText);
-              return;
-            }
-          }
-        };
-        try{
-          xmlhttp.open("GET", 'https://api.thecatapi.com/v1/images/search?size=full', true);
-          xmlhttp.send();
-        } catch (err) {
-          alert(`error: ${err}`)
-        }
-
+  let imgURL;
+  const setImage = (response) => {
+    console.log("callback entered")
+    try{
+      console.log("returned from getCatImage: ", response)
     } catch (err) {
-      console.log('error: ', err)
+      console.log("err", err)
     }
+    // imgURL = response[0]['url']
   }
-
   return (
     <React.Fragment>
       <Box>
         <div>
           What happens if you press the button?
         </div>
-        <Button onClick={() => getCatImage()}>Cat</Button>
+        <img src={imgURL} />
+        <Button onClick={() => getCatImage(setImage)}>Cat</Button>
       </Box>
     </React.Fragment>
   )
