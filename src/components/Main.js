@@ -23,15 +23,11 @@ const Box = styled.div `
 function Main () {
  
   const [imgURL, setImgURL ] = useState('') 
+
   const setImage = (response) => {
-    console.log("callback entered")
-    try{
-      console.log("returned from getCatImage: ", response[0]['url'])
-      setImgURL(response[0]['url']);
-    } catch (err) {
-      console.log("err", err)
-    }
+    setImgURL(response[0]['url']);
   }
+
   return (
     <React.Fragment>
       <Box>
@@ -39,7 +35,6 @@ function Main () {
           What happens if you press the button?
         </div>
         <img src={imgURL} />
-        
         <Button onClick={() => getCatImage(setImage)}>Cat</Button>
       </Box>
     </React.Fragment>
