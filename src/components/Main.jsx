@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import getCatImage, {axiosGetCat} from '../services/getCatImage'
+import {axiosGetCat} from '../services/getCatImage';
+import catTitles from '../content/CatTitles';
 
 const Button = styled.button `
   background: transparent;
@@ -11,34 +12,37 @@ const Button = styled.button `
   padding: 0.25em 1em;
 `
 const Box = styled.div `
-  diplay: flex;
-  margin: 20%;
+   display: flex;
+  margin: 12%;
   padding: 5%;
   border: 2px solid orange;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `
 
 function Main () {
-  const [imgURL, setImgURL ] = useState('') 
+  const [imgURL, setImgURL] = useState('') 
+  const [words, setWords] = useState('What happens if you press the button?')
 
-  // const setImage = (response) => {
-  //   setImgURL(response[0]['url']);
-  // }
+  useEffect(()=> {
+    setWords("oh cute! cats!")
+    // setWords(catTitles[Math.random() * catTitles.length - 1])
+  }, [imgURL])
 
   const setImage = async () => {
-    const response = await axiosGetCat()
-    console.log("response:   ",response)
-    setImgURL(response['data'][0]['url'])
+    const {data} = await axiosGetCat()
+    setImgURL(data[0]['url'])
   }
 
   return (
     <React.Fragment>
       <Box>
         <div>
-          What happens if you press the button?
+          {words}
         </div>
         <img src={imgURL} style={{maxWidth: '90%', padding: '1em'}}/>
         <Button onClick={() => setImage()}>Cat</Button>
-        {/* <Button onClick={() => getCatImage(setImage)}>Cat</Button> */}
       </Box>
     </React.Fragment>
   )
