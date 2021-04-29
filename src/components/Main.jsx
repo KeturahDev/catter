@@ -13,7 +13,8 @@ const Button = styled.button `
 `
 const Box = styled.div `
    display: flex;
-  margin: 12%;
+  margin: 20%;
+  margin-top:10%;
   padding: 5%;
   border: 2px solid orange;
   flex-direction: column;
@@ -41,7 +42,7 @@ function Main () {
         <div>
           {words}
         </div>
-        <img src={imgURL} style={{maxWidth: '90%', padding: '1em'}}/>
+        <img src={imgURL} style={{maxWidth: '80%', padding: '1em'}}/>
         <Button onClick={() => setImage()}>Cat</Button>
       </Box>
     </React.Fragment>
