@@ -28,8 +28,7 @@ function Main () {
 
   useEffect(()=> {
     if (imgURL) {
-      setWords("oh cute! cats!")
-      // setWords(catTitles[Math.random() * catTitles.length])
+      setWords(catTitles[Math.floor(Math.random() * 10)])
     }
   }, [imgURL])
 
