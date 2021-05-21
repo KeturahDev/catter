@@ -27,8 +27,10 @@ function Main () {
   const [words, setWords] = useState('What happens if you press the button?')
 
   useEffect(()=> {
-    setWords("oh cute! cats!")
-    // setWords(catTitles[Math.random() * catTitles.length - 1])
+    if (imgURL) {
+      setWords("oh cute! cats!")
+      // setWords(catTitles[Math.random() * catTitles.length])
+    }
   }, [imgURL])
 
   const setImage = async () => {
