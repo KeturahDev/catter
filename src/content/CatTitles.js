@@ -11,6 +11,7 @@ const catTiles = [
   "What do you think of this one?",
   "I could do this all day!",
   "What a furry lil baby",
+  "AHHHHH fuzzy babyyy"
 ]
 
 export default catTiles;

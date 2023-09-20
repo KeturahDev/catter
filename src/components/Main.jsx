@@ -38,15 +38,13 @@ function Main () {
   }
 
   return (
-    <React.Fragment>
-      <Box>
-        <div>
-          {words}
-        </div>
-        <img src={imgURL} style={{maxWidth: '80%', padding: '1em'}}/>
-        <Button onClick={() => setImage()}>Cat</Button>
-      </Box>
-    </React.Fragment>
+    <Box>
+      <div>
+        {words}
+      </div>
+      <img src={imgURL} style={{maxWidth: '80%', padding: '1em'}}/>
+      <Button onClick={() => setImage()}>Cat</Button>
+    </Box>
   )
 }
 
