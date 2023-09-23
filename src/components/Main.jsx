@@ -12,14 +12,19 @@ const Button = styled.button `
   padding: 0.25em 1em;
 `
 const Box = styled.div `
-   display: flex;
-  margin: 20%;
-  margin-top:10%;
+  display: flex;
   padding: 5%;
-  border: 2px solid orange;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    img {
+      max-height: 250px
+    }
+  }
+
+  
 `
 
 function Main () {

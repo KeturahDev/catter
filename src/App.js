@@ -7,6 +7,10 @@ function App() {
     <div className="App">
       <Header />
       <Main />
+      <footer className="footer">
+        © Copyright {new Date().getFullYear()} Catter. Made by{' '}
+        <a href="https://github.com/KeturahDev">Keturah Howard</a>.
+      </footer>
     </div>
   );
 }

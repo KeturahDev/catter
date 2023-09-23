@@ -4,10 +4,10 @@ import styled from 'styled-components';
 
 function Header () {
     return (
-      <React.Fragment>
+      <>
         <h1>Catter</h1>
-        <p>The app that nobody asked for, but aren't too upset about discovering.</p>
-      </React.Fragment>
+        <p style={{padding: '1em'}}>The app that nobody asked for, but aren't too upset about discovering.</p>
+      </>
     )
 }
 
